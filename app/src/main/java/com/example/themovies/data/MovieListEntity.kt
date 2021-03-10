@@ -18,6 +18,8 @@ data class MovieListEntity(
 )
 
 data class Movie(
+    @Json(name = "id")
+    val id: Int = 0,
     @Json(name = "poster_path")
     val poster_path: String? = null,
     @Json(name = "original_title")

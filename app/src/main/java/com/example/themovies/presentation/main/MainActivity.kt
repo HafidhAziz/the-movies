@@ -11,6 +11,7 @@ import com.example.themovies.R
 import com.example.themovies.data.Movie
 import com.example.themovies.databinding.ActivityMainBinding
 import com.example.themovies.presentation.main.adapter.MovieListAdapter
+import com.example.themovies.presentation.moviedetail.MovieDetailActivity
 import com.example.themovies.util.Status
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -76,7 +77,11 @@ class MainActivity : AppCompatActivity(), MainView, MovieListAdapter.ClickItemLi
         }
     }
 
-    override fun onClickItemListener(movie: Movie) {
+    override fun onClickFavorite() {
         TODO("Not yet implemented")
+    }
+
+    override fun onClickItemListener(movie: Movie) {
+        MovieDetailActivity.startThisActivity(this, movie.id, movie.original_title.orEmpty())
     }
 }

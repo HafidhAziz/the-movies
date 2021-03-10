@@ -11,4 +11,5 @@ interface MainView {
     fun setupObserver()
     fun renderMovies(movies: List<Movie>)
     fun setupToolbar()
+    fun onClickFavorite()
 }
