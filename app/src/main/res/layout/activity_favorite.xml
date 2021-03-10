@@ -14,8 +14,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_favorite_movie_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/dp16"
+            android:layout_height="@dimen/dp0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_favorite"
             tools:itemCount="3"
             tools:listitem="@layout/item_movie" />

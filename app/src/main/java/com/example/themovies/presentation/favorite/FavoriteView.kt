@@ -5,4 +5,7 @@ package com.example.themovies.presentation.favorite
  */
 
 interface FavoriteView {
+    fun setupToolbar()
+    fun setupUI()
+    fun setupData()
 }

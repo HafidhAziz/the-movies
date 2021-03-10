@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themovies.R
 import com.example.themovies.data.Movie
 import com.example.themovies.databinding.ActivityMainBinding
+import com.example.themovies.presentation.favorite.FavoriteActivity
 import com.example.themovies.presentation.main.adapter.MovieListAdapter
 import com.example.themovies.presentation.moviedetail.MovieDetailActivity
 import com.example.themovies.util.Status
@@ -74,11 +75,14 @@ class MainActivity : AppCompatActivity(), MainView, MovieListAdapter.ClickItemLi
             tvTitle.text = getString(R.string.app_name)
             btnBack.visibility = View.GONE
             btnFav.visibility = View.VISIBLE
+            btnFav.setOnClickListener {
+                onClickFavorite()
+            }
         }
     }
 
     override fun onClickFavorite() {
-        TODO("Not yet implemented")
+        FavoriteActivity.startThisActivity(this)
     }
 
     override fun onClickItemListener(movie: Movie) {
