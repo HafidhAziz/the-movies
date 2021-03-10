@@ -12,4 +12,5 @@ interface MainView {
     fun renderMovies(movies: List<Movie>)
     fun setupToolbar()
     fun onClickFavorite()
+    fun onClickCategory()
 }

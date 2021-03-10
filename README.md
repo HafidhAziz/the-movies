@@ -6,7 +6,7 @@ An Android App showing movies content by using Movie DB API
 * Hilt Dependency Injection
 * Room Database
 * Kotlin Coroutines with Moshi Json Converter
-* Simple MVVM Design Pattern
+* MVVM Design Pattern
 * Code with love
 
 # Getting Started
