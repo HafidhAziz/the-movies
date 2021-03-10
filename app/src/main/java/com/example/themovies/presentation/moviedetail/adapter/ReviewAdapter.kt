@@ -28,7 +28,7 @@ class ReviewAdapter(
             binding.tvAuthor.text = review.authorDetails?.username
             binding.tvContent.text = review.content
             Glide.with(binding.imageAuthor.context)
-                .load(String.format(AppConstants.BASE_URL, review.authorDetails?.avatarPath))
+                .load(String.format(AppConstants.BASE_IMAGE_URL, review.authorDetails?.avatarPath))
                 .into(binding.imageAuthor)
         }
     }

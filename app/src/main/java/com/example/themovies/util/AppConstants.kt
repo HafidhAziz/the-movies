@@ -6,8 +6,9 @@ package com.example.themovies.util
 
 class AppConstants {
     companion object INSTANCE {
-        const val BASE_URL = "https://api.themoviedb.org/3"
+        const val BASE_URL = "https://api.themoviedb.org/3/"
         const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original"
+        const val API_KEY = "6b0354275d5229279e75bdfbe49a59a8"
 
     }
 }

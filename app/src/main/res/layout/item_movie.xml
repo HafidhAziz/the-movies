@@ -10,7 +10,10 @@
         android:layout_marginTop="@dimen/dp16"
         android:layout_marginEnd="@dimen/dp16"
         android:background="@drawable/bg_card_white_with_shadow"
-        android:padding="@dimen/dp16">
+        android:paddingStart="@dimen/dp16"
+        android:paddingTop="@dimen/dp16"
+        android:paddingBottom="@dimen/dp16"
+        tools:ignore="RtlSymmetry">
 
         <ImageView
             android:id="@+id/image_movie"
@@ -22,13 +25,15 @@
 
         <TextView
             android:id="@+id/tv_title_movie"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dp0"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp16"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textStyle="bold"
             android:textSize="@dimen/sp18"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_movie"
             app:layout_constraintTop_toTopOf="@id/image_movie"
             tools:text="Movie Title" />
@@ -45,11 +50,13 @@
 
         <TextView
             android:id="@+id/tv_overview"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dp0"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp16"
             android:ellipsize="end"
             android:maxLines="5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_release_date"
             app:layout_constraintTop_toBottomOf="@+id/tv_release_date"
             tools:text="Movie Overview" />
