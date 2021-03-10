@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_author"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="contentDescription" />
+
+        <TextView
+            android:id="@+id/tv_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:paddingStart="@dimen/dp6"
+            android:paddingTop="@dimen/dp2"
+            android:paddingEnd="@dimen/dp6"
+            android:paddingBottom="@dimen/dp2"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintStart_toEndOf="@+id/image_author"
+            app:layout_constraintTop_toTopOf="@+id/image_author"
+            tools:background="@drawable/bg_white_smoke_with_radius_2"
+            tools:text="4.3" />
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp16"
+            android:textAppearance="bold"
+            android:textColor="@color/royal_blue"
+            android:textSize="@dimen/sp18"
+            app:layout_constraintStart_toEndOf="@+id/tv_rating"
+            app:layout_constraintTop_toTopOf="@id/tv_rating"
+            tools:text="Author" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:textAppearance="bold"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintStart_toStartOf="@id/tv_rating"
+            app:layout_constraintTop_toBottomOf="@+id/tv_rating"
+            tools:text="It's a review" />
+
+        <View
+            style="@style/Line"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

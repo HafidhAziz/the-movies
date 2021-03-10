@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">TheMovies</string>
+    <string name="app_name">The Movies</string>
+
+    <string name="category_label">Category</string>
+    <string name="favorite_movie_label">Favorite Movie</string>
+    <string name="overview_label">Overview</string>
 </resources>
