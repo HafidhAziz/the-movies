@@ -16,9 +16,15 @@ interface FavoriteMovieDao {
     fun getAll(): List<FavoriteMovie>
 
     @Insert
-    fun insert(vararg moview: FavoriteMovie)
+    fun insert(vararg movie: FavoriteMovie)
 
     @Delete
     fun delete(movie: FavoriteMovie)
+
+    @Query("SELECT EXISTS (SELECT 1 FROM tb_favorite_movies WHERE idMovie = :id)")
+    fun isItemExists(id: Int): Boolean
+
+    @Query("DELETE FROM tb_favorite_movies WHERE idMovie = :id")
+    fun deleteItemById(id: Int)
 
 }

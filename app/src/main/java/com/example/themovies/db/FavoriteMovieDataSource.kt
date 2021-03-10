@@ -7,7 +7,7 @@ package com.example.themovies.db
 interface FavoriteMovieDataSource {
     fun getAllFavoriteMovies(callback: (List<FavoriteMovie>) -> Unit)
     fun addMovie(
-        idMovie: String,
+        idMovie: Int,
         imageUrl: String,
         title: String,
         releaseDate: String,
@@ -15,4 +15,8 @@ interface FavoriteMovieDataSource {
     )
 
     fun deleteMovie(movie: FavoriteMovie)
+
+    fun isItemExists(id: Int, callback: (Boolean) -> Unit)
+
+    fun deleteItemById(id: Int)
 }

@@ -15,18 +15,23 @@ import com.example.themovies.R
 import com.example.themovies.data.Movie
 import com.example.themovies.data.Review
 import com.example.themovies.databinding.ActivityMovieDetailBinding
+import com.example.themovies.db.FavoriteMovieDataSource
 import com.example.themovies.presentation.moviedetail.adapter.ReviewAdapter
 import com.example.themovies.util.AppConstants
 import com.example.themovies.util.Status
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
 
+    @Inject
+    lateinit var favoriteMovieDataSource: FavoriteMovieDataSource
     lateinit var binding: ActivityMovieDetailBinding
     private val viewModel: MovieDetailViewModel by viewModels()
     private lateinit var reviewListAdapter: ReviewAdapter
     private lateinit var drawable: CircularProgressDrawable
+    private lateinit var movieDetail: Movie
 
     companion object {
 
@@ -70,6 +75,16 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
         binding.rvReview.layoutManager = reviewListLayoutManager
         reviewListAdapter = ReviewAdapter(arrayListOf(), this)
         binding.rvReview.adapter = reviewListAdapter
+
+        binding.imageFavAction.setOnClickListener {
+            favoriteMovieDataSource.isItemExists(movieDetail.id) {
+                if (it) {
+                    onClickUnFavorite()
+                } else {
+                    onClickFavorite()
+                }
+            }
+        }
     }
 
     override fun setupObserver() {
@@ -79,7 +94,8 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
                     binding.progressBar.visibility = View.GONE
                     it.data?.let { movieDetail ->
                         binding.movieDetailContainer.visibility = View.VISIBLE
-                        setDataToView(movieDetail)
+                        this.movieDetail = movieDetail
+                        setDataToView()
                         viewModel.fetchReviewList()
                     }
                 }
@@ -119,7 +135,7 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
         })
     }
 
-    override fun setDataToView(movieDetail: Movie) {
+    override fun setDataToView() {
         drawable = CircularProgressDrawable(this)
         drawable.setColorSchemeColors(
             R.color.royal_blue,
@@ -138,6 +154,14 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
                 .load(AppConstants.BASE_IMAGE_URL + "" + movieDetail.poster_path)
                 .placeholder(drawable)
                 .into(imageMovieDetail)
+        }
+
+        favoriteMovieDataSource.isItemExists(movieDetail.id) {
+            if (it) {
+                binding.imageFavAction.setImageResource(R.drawable.ic_fav_selected)
+            } else {
+                binding.imageFavAction.setImageResource(R.drawable.ic_fav)
+            }
         }
     }
 
@@ -158,6 +182,18 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailView {
     }
 
     override fun onClickFavorite() {
-        TODO("Not yet implemented")
+        favoriteMovieDataSource.addMovie(
+            movieDetail.id,
+            movieDetail.poster_path.orEmpty(),
+            movieDetail.original_title.orEmpty(),
+            movieDetail.release_date.orEmpty(),
+            movieDetail.overview.orEmpty()
+        )
+        binding.imageFavAction.setImageResource(R.drawable.ic_fav_selected)
+    }
+
+    override fun onClickUnFavorite() {
+        favoriteMovieDataSource.deleteItemById(movieDetail.id)
+        binding.imageFavAction.setImageResource(R.drawable.ic_fav)
     }
 }

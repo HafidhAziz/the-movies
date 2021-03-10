@@ -1,6 +1,5 @@
 package com.example.themovies.presentation.moviedetail
 
-import com.example.themovies.data.Movie
 import com.example.themovies.data.Review
 
 /**
@@ -13,8 +12,9 @@ interface MovieDetailView {
     fun getMovieDetail()
     fun setupUI()
     fun setupObserver()
-    fun setDataToView(movieDetail: Movie)
+    fun setDataToView()
     fun renderReviewList(reviews: List<Review>)
     fun setupToolbar()
     fun onClickFavorite()
+    fun onClickUnFavorite()
 }

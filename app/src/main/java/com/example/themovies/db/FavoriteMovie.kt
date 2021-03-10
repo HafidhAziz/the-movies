@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "tb_favorite_movies")
 data class FavoriteMovie(
-    val idMovie: String,
+    val idMovie: Int,
     val imageUrl: String,
     val title: String,
     val releaseDate: String,
