@@ -41,12 +41,6 @@ class FavoriteMovieLocalDataSource @Inject constructor(private val favoriteMovie
         }
     }
 
-    override fun deleteMovie(movie: FavoriteMovie) {
-        executorService.execute {
-            favoriteMovieDao.delete(movie)
-        }
-    }
-
     override fun isItemExists(id: Int, callback: (Boolean) -> Unit) {
         executorService.execute {
             val isExist = favoriteMovieDao.isItemExists(id)

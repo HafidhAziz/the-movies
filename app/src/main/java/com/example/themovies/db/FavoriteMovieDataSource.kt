@@ -14,8 +14,6 @@ interface FavoriteMovieDataSource {
         overview: String
     )
 
-    fun deleteMovie(movie: FavoriteMovie)
-
     fun isItemExists(id: Int, callback: (Boolean) -> Unit)
 
     fun deleteItemById(id: Int)

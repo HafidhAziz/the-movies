@@ -1,7 +1,6 @@
 package com.example.themovies.db
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -17,9 +16,6 @@ interface FavoriteMovieDao {
 
     @Insert
     fun insert(vararg movie: FavoriteMovie)
-
-    @Delete
-    fun delete(movie: FavoriteMovie)
 
     @Query("SELECT EXISTS (SELECT 1 FROM tb_favorite_movies WHERE idMovie = :id)")
     fun isItemExists(id: Int): Boolean
