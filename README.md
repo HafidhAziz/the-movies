@@ -7,6 +7,8 @@ An Android App showing movies content by using Movie DB API
 * Room Database
 * Kotlin Coroutines with Moshi Json Converter
 * MVVM Design Pattern
+* Sample UI Test
+* Sample Local Database Test
 * Code with love
 
 # Getting Started
